@@ -25,6 +25,8 @@ class SellsController extends Controller
      */
     public function create()
     {
+
+        ///ESTA ES MI FUNCION DE VENTAS, NO TOCAR
         $employeeData = $this->getEmployeeData();
         $recycledWasteInventories = RecycledWasteInventory::all();
         $employees = Employee::all();

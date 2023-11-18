@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Employee;
 use App\Models\WasteInventory;
 use App\Models\RecycledWasteInventory;
+use Illuminate\Support\Facades\Session;
 
 class ConversionsController extends Controller
 {
@@ -24,9 +25,10 @@ class ConversionsController extends Controller
     {
         //
         //
-        $emplooyes = Employee::all();
+        $employeeData = $this->getEmployeeData();
         $wasteInventories = WasteInventory::all();
-        return view('conversion.create', compact('employees', 'wasteInventories'));
+        $employees = Employee::all();
+        return view('conversion.create', compact('employees', 'wasteInventories', 'employeeData'));
     }
 
     /**
@@ -42,6 +44,12 @@ class ConversionsController extends Controller
             'amount' => $request->input('new_element_amount'),
         ]);
         return redirect()->route('conversion.create')->with('success', 'Elemento reciclado creado exitosamente.');
+    }
+
+    private function getEmployeeData()
+    {
+        $employeeData = Session::get('employeeData');
+        return $employeeData;
     }
 
     /**
