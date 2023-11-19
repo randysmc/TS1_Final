@@ -4,7 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConversionsController;
 use App\Http\Controllers\EmployeeController;
-
+use App\Http\Controllers\RecycledWasteInventoryController;
 
 use App\Http\Controllers\WasteIncomeController;
 use App\Http\Controllers\WasteInventoryController;

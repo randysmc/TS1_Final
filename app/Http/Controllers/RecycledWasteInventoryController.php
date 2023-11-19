@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\RecycledWasteInventory;
+use App\Models\WasteInventory;
 use Illuminate\Http\Request;
+use App\Models\Employee;
 use Illuminate\Support\Facades\Session;
 
 
@@ -14,9 +16,10 @@ class RecycledWasteInventoryController extends Controller
      */
     public function index()
     {
-        $employeeData = $this->getEmployeeData();   
+        //$employeeData = $this->getEmployeeData();
+        //$employees = Employee::all(); 
         $recycledWasteInventories = RecycledWasteInventory::all();
-        return view('recycled-waste-inventory.index', compact('recycledWasteInventories', 'employeeData'));
+        return view('recycled-waste-inventory.index', compact('recycledWasteInventories'));
     }
 
     private function getEmployeeData()
@@ -25,13 +28,15 @@ class RecycledWasteInventoryController extends Controller
         return $employeeData;
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $employeeData = $this->getEmployeeData();
-        return view('recycled-waste-inventory.create', compact('employeeData'));
+        $wasteInventories = WasteInventory::all();
+        return view('recycled-waste-inventory.form', compact('wasteInventories'));
     }
 
     /**
@@ -39,55 +44,33 @@ class RecycledWasteInventoryController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            
-            'name' => 'required||unique:recycled_waste_inventories',
-            'amount' => 'required||integer',
-        ]);
+        //corregir el formulario::
+            $request->validate([
+                //'waste_inventory_id' => 'required|exists:waste_inventories,id'
+            ]);
 
-        //RecycledWasteInventory::create($request->all());
+            $wasteInventory = WasteInventory::findOrFail($request->input('waste_inventory_id'));
 
-        //return redirect()->route('recycled-waste-inventory.index');
+            //Crear un nuevo elemento
+            $recycledWasteInventory = RecycledWasteInventory::create([
+                'name' => $wasteInventory->name . '_Reciclado',
+                'amount' => 0,
+                'recycled_price' => $wasteInventory->cost * 2,
+                //'waste_inventory_id' => $wasteInventory->id,
+            ]);
 
-        $campos=[
-            'name' => 'required',
-            'amount' => 'required',
-        ];
+            return redirect()->route('recycled-waste-inventory.index');
 
-        $message=[
-            'name.required' => 'el nombre es requerido',
-            'amount.required' => 'cantidad requerida'
-        ];
+        
 
-        $this->validate($request, $campos, $message);
-
-        //$existingInventory = RecycledWasteInventory::where('name', $request->input('name'))->first();
-
-        /**if($existingInventory){
-            //redirige a la vista de detalles
-            return redirect()->route('recycled-waste-inventory.show', $existingInventory->id);
-        } */
-
-
-        $recycled_waste_inventory = new RecycledWasteInventory();
-        $recycled_waste_inventory->name = $request->input('name');
-        $recycled_waste_inventory->amount= $request->input('amount');
-        $recycled_waste_inventory->save();
-
-        //RecycledWasteInventory::create($request->all());
-
-        return redirect()->route('recycled-waste-inventory.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show( $id)
+    public function show($id)
     {
-        $employeeData = $this->getEmployeeData();
-        $recycledWasteInventory = RecycledWasteInventory::findOrFail($id);
-        return view('recycled-waste-inventory.show', compact('recycledWasteInventory', 'employeeData'));
-
+       
     }
 
     /**

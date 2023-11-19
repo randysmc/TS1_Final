@@ -66,6 +66,11 @@ class Employee extends Authenticatable
         return $this->hasMany(Sells::class);
     }   
 
+    public function recycledWasteInventories()
+    {
+        return $this->hasManu(RecycledWasteInventory::class);
+    }
+
     public function getAuthPassword(){
         return $this->password;
     }

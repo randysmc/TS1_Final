@@ -13,7 +13,11 @@ class RecycledWasteInventory extends Model
 
     protected $fillable = [
         'name',
-        'amount'
+        'amount',
+        'recycled_price',
+        //'employee_id',
+        'waste_inventory_id'
+
     ];
 
     public function conversions()
@@ -25,4 +29,17 @@ class RecycledWasteInventory extends Model
     {
         return $this->hasMany(Sells::class);
     }   
+
+    public function wasteInventory()
+    {
+        return $this->belongsTo(WasteInventory::class);
+    }
+
+   //public function employee()
+    //{
+      //  return $this->belongsTo(Employee::class);
+   // }
+
+    
+    
 }
