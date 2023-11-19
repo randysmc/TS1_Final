@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <!-- ...otros encabezados... -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/base.css') }}">
 </head>
+
 <body>
     <!-- ...contenido... -->
     <div class="wrapper">
@@ -20,8 +22,9 @@
                                     <tr>
                                         <th>Nombre</th>
                                         <th>Residuo</th>
+                                        <th>Precio*Unidad</th>
                                         <th>Cantidad</th>
-                                        <th>Costo</th>
+                                        <th>Costo Total</th>
                                         <th>Fecha</th>
                                     </tr>
                                 </thead>
@@ -30,8 +33,9 @@
                                     <tr>
                                         <td>{{ $wasteIncome->employee->name }}</td>
                                         <td>{{ $wasteIncome->wasteInventory->name }}</td>
-                                        <td>{{ $wasteIncome->amount }}</td>
-                                        <td>{{ $wasteIncome->cost }}</td>
+                                        <td>Q {{ $wasteIncome->wasteInventory->cost}}</td>
+                                        <td style="text-align: right;">{{ $wasteIncome->amount }} unidades</td>
+                                        <td>Q{{ $wasteIncome->cost }}</td>
                                         <td>{{ $wasteIncome->date }}</td>
                                     </tr>
                                     @empty
@@ -42,14 +46,17 @@
                                 </tbody>
                             </table>
                             <div class="d-grid mt-3">
-                                <a href="{{ route('waste-income.create') }}" class="btn btn-success">Crear Nuevo Registro</a>
+                                <a href="{{ route('waste-income.create') }}" class="btn btn-success">Crear Nuevo Ingreso</a>
+                            </div>
+                            <div class="d-grid mt-3">
+                                <a href="{{ route('waste-inventory.index') }}" class="btn btn-success">Ver Inventario</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
     @include('layouts.scripts')
 </body>
 

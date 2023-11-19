@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->integer('amount');
+            $table->decimal('cost',8,2);
             $table->timestamps();
         });
     }

@@ -13,7 +13,8 @@ class WasteInventory extends Model
 
     protected $fillable = [
         'name',
-        'amount'
+        'amount',
+        'cost'
     ];
 
     public function wasteIncomes()

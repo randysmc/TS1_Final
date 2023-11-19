@@ -35,14 +35,7 @@ use App\Models\WasteInventory;
                                 <h2 class="card-title mb-4">Registro de Ingresos</h2>
                                 <form action="{{ route('waste-inventory.store') }}" method="post" enctype="multipart/form-data">
                                     @csrf
-                                    <div class="mb-3">
-                                        <label for="amount" class="form-label">Cantidad:</label>
-                                        <input type="text" class="form-control" id="amount" name="amount" value="{{ old('amount') }}">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="cost" class="form-label">Costo</label>
-                                        <input type="text" class="form-control" id="cost" name="cost" value="{{ old('cost') }}">
-                                    </div>
+
                                     <div class="mb-3">
                                         <label for="employee_id" class="form-label">Empleado:</label>
                                         <select class="form-select" id="employee_id" name="employee_id">
@@ -52,15 +45,26 @@ use App\Models\WasteInventory;
                                             @endforeach
                                         </select>
                                     </div>
+
+
                                     <div class="mb-3">
                                         <label for="waste_inventory_id" class="form-label">Tipo de Residuo:</label>
                                         <select class="form-select" id="waste_inventory_id" name="waste_inventory_id">
                                             <option value="" selected disabled>Select Waste Inventory</option>
                                             @foreach ($wasteInventories as $inventory)
-                                                <option value="{{ $inventory->id }}">{{ $inventory->name }}</option>
+                                                <option value="{{ $inventory->id }}">{{ $inventory->name }} Q.{{ $inventory->cost}}</option>
                                             @endforeach
                                         </select>
                                     </div>
+
+
+                                    <div class="mb-3">
+                                        <label for="amount" class="form-label">Cantidad:</label>
+                                        <input type="text" class="form-control" id="amount" name="amount" value="{{ old('amount') }}">
+                                    </div>
+
+
+
                                     <div class="mb-3">
                                         <label for="date" class="form-label">Fecha:</label>
                                         <input type="date" class="form-control" id="date" name="date" value="{{ old('date', \Carbon\Carbon::now()->toDateString()) }}">
@@ -71,6 +75,9 @@ use App\Models\WasteInventory;
             
                                     <div class="d-grid mt-3">
                                         <a href="{{ route('waste-income.index') }}" class="btn btn-secondary">Regresar</a>
+                                    </div>
+                                    <div class="d-grid mt-3">
+                                        <a href="{{ route('waste-inventory.create') }}" class="btn btn-secondary">Ingresar nuevo residuo</a>
                                     </div>
                                 </form>
                             </div>

@@ -21,6 +21,7 @@
                                         <th>ID</th>
                                         <th>Nombre</th>
                                         <th>Cantidad</th>
+                                        <th>Costo</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -30,6 +31,7 @@
                                         <td>{{ $wasteInventory->id }}</td>
                                         <td>{{ $wasteInventory->name }}</td>
                                         <td>{{ $wasteInventory->amount }}</td>
+                                        <td>{{ $wasteInventory->cost}}</td>
                                         <td>
                                             <a href="{{ route('waste-inventory.edit', $wasteInventory->id) }}" class="btn btn-success btn-sm">Editar</a>
                                             <form action="{{ route('waste-inventory.destroy', $wasteInventory->id) }}" method="post" style="display: inline;">

@@ -39,12 +39,14 @@ class WasteInventoryController extends Controller
     {
         $campos=[
             'name' => 'required',
-            'amount' => 'required'
+            'amount' => 'required',
+            'cost' => 'required'
         ];
 
         $message=[
             'name.required' => 'el nombre es requerido',
-            'amount.required' => 'cantidad requerida'
+            'amount.required' => 'cantidad requerida',
+            'cost.required' => 'Costo requerido'
         ];
 
         $this->validate($request, $campos, $message);
@@ -53,6 +55,7 @@ class WasteInventoryController extends Controller
         $waste_inventory = new WasteInventory();
         $waste_inventory->name = $request->input('name');
         $waste_inventory->amount= $request->input('amount');
+        $waste_inventory->cost=$request->input('cost');
         $waste_inventory->save();
 
         return redirect()->route('waste-inventory.index')-> with('message', 'Agregado Exitosamente');
@@ -89,7 +92,7 @@ class WasteInventoryController extends Controller
 
         $waste_inventory = WasteInventory::findOrFail($id);
 
-        return redirect()->route('waste-inventory.index');
+        return redirect()->route('waste-inventory.index')->with('message', 'Actualizado correctamente');
 
     }
 

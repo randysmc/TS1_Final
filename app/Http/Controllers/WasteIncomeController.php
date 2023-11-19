@@ -48,18 +48,26 @@ class WasteIncomeController extends Controller
     {
         //
         $data = $request->validate([
-            'cost' => 'required||numeric',
+            //'cost' => 'required||numeric',
             'amount' => 'required||integer',
             'date' => 'required||date',
             'employee_id' => 'required|exists:employees,id',
             'waste_inventory_id' => 'required|exists:waste_inventories,id',
         ]);
 
+        //Esto es nuevo
+        //Obtenemos el WasteInventory Correspondiente
+        $wasteInventory= WasteInventory::findOrFail($data['waste_inventory_id']);
+
+        //Calculamos el costo del ingreso basado en cantidad x el atributo cost del inventario
+        $data['cost'] = $data['amount']* $wasteInventory->cost;
+
+
         //Ingreso de un nuevo residuo
         $wasteIncome = WasteIncome::create($data);
 
         //Actualizamos el atributo amount de wasteinventory
-        $wasteInventory = $wasteIncome->wasteInventory;
+        //$wasteInventory = $wasteIncome->wasteInventory;
         $wasteInventory->amount += $wasteIncome->amount;
         $wasteInventory->save();
 

@@ -24,9 +24,17 @@
                             <input type="text" name="name" value="{{ isset($waste_inventory->name) ? $waste_inventory->name : '' }}" id="name" class="form-control" required>
                         </div>
 
+                        
+
+
                         <div class="mb-3">
                             <label for="amount" class="form-label">Cantidad:</label>
                             <input type="number" name="amount" value="{{ isset($waste_inventory->amount) ? $waste_inventory->amount : '' }}" id="amount" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="cost" class="form-label">Costo:</label>
+                            <input type="number" name="cost" value="{{ isset($waste_inventory->cost) ? $waste_inventory->cost : '' }}" id="amount" class="form-control" required>
                         </div>
 
                         <div class="d-grid">
@@ -41,5 +49,5 @@
             </div>
         </div>
     </div>
-</div>
 
+</div>

@@ -31,6 +31,14 @@ Formulario
             </select>
         </div>
         <div class="mb-3">
+            <label for="employee_id" class="form-lable">Selecciona un Empleado</label>
+            <select name="employee_id" id="employee_id" class="form-select" required>
+                @foreach($employees as $employee)
+                <option value="{{ $employee->id }}">{{ $employee->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3">
             <label for="new_element_name" class="form-label">Nombre del Nuevo Elemento Reciclado:</label>
             <input type="text" name="new_element_name" id="new_element_name" class="form-control" required>
         </div>

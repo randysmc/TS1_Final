@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->integer('amount');
+            //$table->decimal('recycled_waste_inventories_price', 8, 2);
             $table->timestamps();
         });
     }
