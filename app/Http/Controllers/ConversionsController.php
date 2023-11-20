@@ -16,8 +16,8 @@ class ConversionsController extends Controller
      */
     public function index()
     {
-        //
-        return view('conversion.index');
+        $conversions = Conversions::all();
+        return view('conversion.index', compact('conversions'));
     }
 
     /**

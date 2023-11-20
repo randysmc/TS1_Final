@@ -53,7 +53,7 @@ class SellsController extends Controller
             if ($recycledWasteInventory && $recycledWasteInventory->amount >= $data['amount']) {
                 $sell = new Sells([
                     'amount' => $data['amount'],
-                    'sell_price' => $data['sell_price'],
+                    //'sell_price' => $data['sell_price'],
                     'employee_id' => $data['employee_id'],
                     'recycled_waste_inventory_id' => $data['recycled_waste_inventory_id'],
                     'date' => $data['date'],
