@@ -6,6 +6,7 @@ use App\Models\RecycledWasteInventory;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Models\Sells;
+use App\Enums\UserRole as RoleEnum;
 use Illuminate\Support\Facades\Session;
 
 class SellsController extends Controller
@@ -15,9 +16,10 @@ class SellsController extends Controller
      */
     public function index()
     {
-        $sells = Sells::with(['employee', 'recycledWasteInventory'])->paginate(10);
+        $employeeData = $this->getEmployeeData();
+        $sells = Sells::with(['employee', 'recycledWasteInventory'])->paginate();
 
-        return view('sell.index', compact('sells'));
+        return view('sell.index', compact('sells', 'employeeData'));
     }
 
     /**
@@ -28,10 +30,11 @@ class SellsController extends Controller
 
         ///ESTA ES MI FUNCION DE VENTAS, NO TOCAR
         $employeeData = $this->getEmployeeData();
+        $adminEmployees = Employee::where('role', RoleEnum::Admin)->get();
         $recycledWasteInventories = RecycledWasteInventory::all();
         $employees = Employee::all();
 
-        return view('sell.create', compact('recycledWasteInventories', 'employees', 'employeeData'));
+        return view('sell.create', compact('recycledWasteInventories', 'adminEmployees', 'employeeData'));
     }
 
     /**

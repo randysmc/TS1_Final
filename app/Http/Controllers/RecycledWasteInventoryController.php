@@ -16,10 +16,10 @@ class RecycledWasteInventoryController extends Controller
      */
     public function index()
     {
-        //$employeeData = $this->getEmployeeData();
+        $employeeData = $this->getEmployeeData();
         //$employees = Employee::all(); 
         $recycledWasteInventories = RecycledWasteInventory::all();
-        return view('recycled-waste-inventory.index', compact('recycledWasteInventories'));
+        return view('recycled-waste-inventory.index', compact('recycledWasteInventories', 'employeeData'));
     }
 
     private function getEmployeeData()

@@ -15,9 +15,17 @@ class ConversionsController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
+        $employeeData = $this->getEmployeeData();
         $conversions = Conversions::all();
-        return view('conversion.index', compact('conversions'));
+        return view('conversion.index', compact('conversions', 'employeeData'));
+    }
+
+
+    private function getEmployeeData()
+    {
+        $employeeData = Session::get('employeeData');
+        return $employeeData;
     }
 
     /**
@@ -31,7 +39,7 @@ class ConversionsController extends Controller
         $wasteInventories = WasteInventory::all();
         $recycledWasteInventories = RecycledWasteInventory::all();
         $employees = Employee::all();
-        
+
         return view('conversion.create', compact('employees', 'wasteInventories', 'recycledWasteInventories', 'employeeData'));
         //return view('conversion.index');
     }
@@ -41,24 +49,24 @@ class ConversionsController extends Controller
      */
     public function store(Request $request)
     {
-        
-        
-        //$request->validate([
-          //  'employee_id' => 'required|exists:employees,id',
-         //   'recycled_waste_inventory_id' => 'required|exists:recycled_waste_inventories,id',
-          //  'recycled_amount' => 'required|numeric|min:0',
-          ///  'date' => 'required|date',
 
-        //]);
-        
+
+        $request->validate([
+          'employee_id' => 'required|exists:employees,id',
+           'recycled_waste_inventory_id' => 'required|exists:recycled_waste_inventories,id',
+          'recycled_amount' => 'required|numeric|min:0',
+          'date' => 'required|date',
+
+        ]);
+
 
         $recycledWasteInventory = RecycledWasteInventory::findOrFail($request->recycled_waste_inventory_id);
 
-        //dd($recycledWasteInventory);
-        //obtenemos waste_inventory_id
         
+        //obtenemos waste_inventory_id
+
         $wasteInventoryId = $recycledWasteInventory->waste_inventory_id;
-        //dd($wasteInventoryId);
+        
 
         //obtenemos el WasteInventory
         $wasteInventory = WasteInventory::findOrFail($wasteInventoryId);
@@ -77,22 +85,18 @@ class ConversionsController extends Controller
             ]);
             //dd($conversion);
 
-              // Actualizar los amounts en WasteInventory y RecycledWasteInventory
-              $wasteInventory->decrement('amount', $request->recycled_amount);
-              $recycledWasteInventory->increment('amount', $request->recycled_amount);
-  
-              return redirect()->route('conversion.create')->with('success', 'Conversión realizada exitosamente.');
-          } else {
-              return redirect()->route('conversion.create')->with('error', 'No hay suficiente cantidad en WasteInventory para realizar la conversión.');
-          }
 
+
+            // Actualizar los amounts en WasteInventory y RecycledWasteInventory
+            $wasteInventory->decrement('amount', $request->recycled_amount);
+            $recycledWasteInventory->increment('amount', $request->recycled_amount);
+
+            return redirect()->route('conversion.create')->with('success', 'Conversión realizada exitosamente.');
+        } else {
+            return redirect()->route('conversion.create')->with('error', 'No hay suficiente cantidad en WasteInventory para realizar la conversión.');
+        }
     }
 
-    private function getEmployeeData()
-    {
-        $employeeData = Session::get('employeeData');
-        return $employeeData;
-    }
 
     /**
      * Display the specified resource.

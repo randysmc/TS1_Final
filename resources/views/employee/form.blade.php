@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+
   @if(count($errors)>0)
     <div class="alert-danger" role="alert">
         <ul>
