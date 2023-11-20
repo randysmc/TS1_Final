@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->integer('amount');
             $table->decimal('recycled_price', 8, 2);
-            //$table->foreignId('waste_inventory_id')->constrained('waste_inventories');
+            $table->foreignId('waste_inventory_id')->constrained('waste_inventories');
             //$table->foreignId('employee_id')->constrained('employees');
             $table->timestamps();
         });

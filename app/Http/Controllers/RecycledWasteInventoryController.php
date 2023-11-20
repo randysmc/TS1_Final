@@ -46,7 +46,7 @@ class RecycledWasteInventoryController extends Controller
     {
         //corregir el formulario::
             $request->validate([
-                //'waste_inventory_id' => 'required|exists:waste_inventories,id'
+                'waste_inventory_id' => 'required|exists:waste_inventories,id'
             ]);
 
             $wasteInventory = WasteInventory::findOrFail($request->input('waste_inventory_id'));
@@ -56,7 +56,7 @@ class RecycledWasteInventoryController extends Controller
                 'name' => $wasteInventory->name . '_Reciclado',
                 'amount' => 0,
                 'recycled_price' => $wasteInventory->cost * 2,
-                //'waste_inventory_id' => $wasteInventory->id,
+                'waste_inventory_id' => $wasteInventory->id,
             ]);
 
             return redirect()->route('recycled-waste-inventory.index');

@@ -57,8 +57,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="date" class="form-label">Fecha de Venta:</label>
-                <input type="date" name="date" id="date" class="form-control" required>
+                <label for="date" class="form-label">Fecha:</label>
+                <input type="date" class="form-control" id="date" name="date" value="{{ old('date', now()->toDateString()) }}" required>
             </div>
 
             <button type="submit" class="btn btn-primary">Realizar Venta</button>

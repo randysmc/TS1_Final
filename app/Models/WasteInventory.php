@@ -26,4 +26,9 @@ class WasteInventory extends Model
     {
         return $this->hasMany(Conversions::class);
     }
+
+    public function recycledWasteInventory()
+    {
+        return $this->hasOne(RecycledWasteInventory::class);
+    }
 }

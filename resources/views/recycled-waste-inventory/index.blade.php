@@ -16,7 +16,7 @@
                     <td>{{ $recycledWasteInventory->name }}</td>
                     <td>{{ $recycledWasteInventory->amount }}</td>
                     <td>{{ $recycledWasteInventory->recycled_price }}</td>
-                    {{-- Agrega más columnas según sea necesario --}}
+                    
                 </tr>
             @endforeach
         </tbody>
