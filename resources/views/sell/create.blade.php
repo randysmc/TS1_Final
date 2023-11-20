@@ -41,7 +41,7 @@
                 <label for="recycled_waste_inventory_id" class="form-label">Selecciona un Producto en Stock:</label>
                 <select name="recycled_waste_inventory_id" id="recycled_waste_inventory_id" class="form-select" required>
                     @foreach($recycledWasteInventories as $inventory)
-                    <option value="{{ $inventory->id }}">{{ $inventory->name }} - Cantidad disponible: {{ $inventory->amount }}</option>
+                    <option value="{{ $inventory->id }}">{{ $inventory->name }} - Cantidad disponible: {{ $inventory->amount }} -Precio: {{$inventory->recycled_price}}</option>
                     @endforeach
                 </select>
             </div>
@@ -51,10 +51,7 @@
                 <input type="text" name="amount" id="amount" class="form-control" required>
             </div>
 
-            <div class="mb-3">
-                <label for="sell_price" class="form-label">Precio de Venta:</label>
-                <input type="text" name="sell_price" id="sell_price" class="form-control" required>
-            </div>
+
 
             <div class="mb-3">
                 <label for="date" class="form-label">Fecha:</label>

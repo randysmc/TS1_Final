@@ -42,7 +42,7 @@ class SellsController extends Controller
   
             $data = $request->validate([
                 'amount' => 'required|integer',
-                'sell_price' => 'required|numeric',
+                //'sell_price' => 'required|numeric',
                 'employee_id' => 'required',
                 'recycled_waste_inventory_id' => 'required',
                 'date' => 'required|date',
@@ -53,6 +53,7 @@ class SellsController extends Controller
             if ($recycledWasteInventory && $recycledWasteInventory->amount >= $data['amount']) {
                 $sell = new Sells([
                     'amount' => $data['amount'],
+                    'sell_price' => $recycledWasteInventory->recycled_price,
                     //'sell_price' => $data['sell_price'],
                     'employee_id' => $data['employee_id'],
                     'recycled_waste_inventory_id' => $data['recycled_waste_inventory_id'],
