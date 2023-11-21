@@ -14,6 +14,7 @@ class Sells extends Model
     protected $fillable = [
         'amount',
         'sell_price',
+        'cost',
         'date',
         'employee_id',
         'recycled_waste_inventory_id'

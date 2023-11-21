@@ -39,8 +39,8 @@ use App\Models\WasteInventory;
                                     <div class="mb-3">
                                         <label for="employee_id" class="form-label">Empleado:</label>
                                         <select class="form-select" id="employee_id" name="employee_id">
-                                            <option value="" selected disabled>Select Employee</option>
-                                            @foreach ($employees as $employee)
+                                            <option value="" selected disabled>Seleccione Empleado</option>
+                                            @foreach ($wasteClassifierEmployees as $employee)
                                                 <option value="{{ $employee->id }}">{{ $employee->name }} {{ $employee->last_name }}</option>
                                             @endforeach
                                         </select>
@@ -50,7 +50,7 @@ use App\Models\WasteInventory;
                                     <div class="mb-3">
                                         <label for="waste_inventory_id" class="form-label">Tipo de Residuo:</label>
                                         <select class="form-select" id="waste_inventory_id" name="waste_inventory_id">
-                                            <option value="" selected disabled>Select Waste Inventory</option>
+                                            <option value="" selected disabled>Lista de residuos</option>
                                             @foreach ($wasteInventories as $inventory)
                                                 <option value="{{ $inventory->id }}">{{ $inventory->name }} Q.{{ $inventory->cost}}</option>
                                             @endforeach

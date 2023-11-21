@@ -35,8 +35,9 @@ class RecycledWasteInventoryController extends Controller
      */
     public function create()
     {
+        $employeeData = Session::get('employeeData');
         $wasteInventories = WasteInventory::all();
-        return view('recycled-waste-inventory.form', compact('wasteInventories'));
+        return view('recycled-waste-inventory.create', compact('wasteInventories', 'employeeData'));
     }
 
     /**

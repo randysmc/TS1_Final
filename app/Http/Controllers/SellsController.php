@@ -57,6 +57,7 @@ class SellsController extends Controller
                 $sell = new Sells([
                     'amount' => $data['amount'],
                     'sell_price' => $recycledWasteInventory->recycled_price,
+                    'cost' => $data['amount'] * $recycledWasteInventory->recycled_price,
                     //'sell_price' => $data['sell_price'],
                     'employee_id' => $data['employee_id'],
                     'recycled_waste_inventory_id' => $data['recycled_waste_inventory_id'],

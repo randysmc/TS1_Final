@@ -16,7 +16,7 @@ class EmployeeController extends Controller
     public function index()
     {
 
-        $data ['employees'] = Employee::paginate(100);
+        $data ['employees'] = Employee::paginate();
         foreach($data['employees'] as $employee){
             $employee->roleDescription = UserRole::getDescription($employee->role);
         }

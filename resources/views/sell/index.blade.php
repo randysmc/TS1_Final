@@ -32,6 +32,7 @@
                                 <th>ID</th>
                                 <th>Cantidad</th>
                                 <th>Precio de Venta</th>
+                                <th>Costro total</th>
                                 <th>Fecha</th>
                                 <th>Empleado</th>
                                 <th>Producto en Stock</th>
@@ -43,6 +44,7 @@
                                 <td>{{ $sell->id }}</td>
                                 <td>{{ $sell->amount }}</td>
                                 <td>{{ $sell->sell_price }}</td>
+                                <td>{{ $sell->cost}}</td>
                                 <td>{{ $sell->date }}</td>
                                 <td>{{ $sell->employee->name }} {{ $sell->employee->last_name }}</td>
                                 <td>{{ $sell->recycledWasteInventory->name }} - Cantidad: {{ $sell->recycledWasteInventory->amount }}</td>

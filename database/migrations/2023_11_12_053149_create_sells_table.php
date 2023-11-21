@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('amount');
             $table->decimal('sell_price', 8, 2);
+            $table->decimal('cost',8,2)->nullable();
             $table->date('date');
             // Foreign key reference to employees table
             $table->foreignId('employee_id')->constrained('employees');

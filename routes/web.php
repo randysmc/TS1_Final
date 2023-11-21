@@ -5,10 +5,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConversionsController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RecycledWasteInventoryController;
-
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\WasteIncomeController;
 use App\Http\Controllers\WasteInventoryController;
 use App\Http\Controllers\SellsController;
+
 
 //use App\Models\WasteInventory;
 use Illuminate\Support\Facades\Route;
@@ -46,8 +47,22 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/waste-inventory', WasteInventoryController::class); 
     Route::resource('/waste-income', WasteIncomeController::class);
     Route::resource('/recycled-waste-inventory', RecycledWasteInventoryController::class);
+    Route::resource('/conversion',ConversionsController::class);
     Route::resource('/sell', SellsController::class);
-    Route::resource('conversion',ConversionsController::class);
+    Route::get('report/residuos-mas-ingresados', [ReportController::class, 'residuosMasIngresados'])->name('report.residuosMasIngresados');
+
+    Route::get('report/residuo-mas-reciclado', 'ReportController@residuoMasReciclado')->name('report.residuoMasReciclado');
+    Route::get('report/residuo-mas-vendido', 'ReportController@residuoMasVendido')->name('report.residuoMasVendido');
+    Route::get('report/usuario-mayor-ingreso-residuos', 'ReportController@usuarioMayorIngresoResiduos')->name('report.usuarioMayorIngresoResiduos');
+    Route::get('report/usuario-mayor-reciclaje', 'ReportController@usuarioMayorReciclajes')->name('report.usuarioMayorReciclajes');
+    Route::get('report/usuario-mayor-ventas', 'ReportController@usuarioMayorVentas')->name('report.usuarioMayorVentas');
+    Route::get('report/usuario-mayor-ingresos', 'ReportController@usuarioMayorIngresos')->name('report.usuarioMayorIngresos');
+
+
+
+
+
+
     
     
     

@@ -5,17 +5,19 @@ hola
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/base.css') }}">
     <title>Listado de Conversiones</title>
 </head>
 
 <body>
 
-    <div class="container mt-5">
+    <div class="wrapper">
+        @include('layouts.header')
         <h2 class="text-center mb-4">Listado de Conversiones</h2>
 
-        <table class="table table-striped">
+       <div class="tablas">
+         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -37,11 +39,13 @@ hola
                 @endforeach
             </tbody>
         </table>
-
-
-        <div class="d-grid mt-3">
+                <div class="d-grid mt-3">
             <a href="{{ route('conversion.create') }}" class="btn btn-secondary">Nuevo Proceso de Reciclaje</a>
         </div>
+       </div>
+
+
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

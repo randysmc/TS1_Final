@@ -36,6 +36,8 @@
                             </select>
                         </div>
 
+                        
+
                         <div class="mb-3">
                             <label for="amount" class="form-label">Cantidad a Vender:</label>
                             <input type="text" name="amount" id="amount" class="form-control" required>

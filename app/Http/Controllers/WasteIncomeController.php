@@ -6,6 +6,7 @@ use App\Models\Employee;
 use App\Models\WasteIncome;
 use App\Models\WasteInventory;
 use Illuminate\Http\Request;
+use App\Enums\UserRole as RoleEnum;
 use Illuminate\Support\Facades\Session;
 
 
@@ -34,11 +35,12 @@ class WasteIncomeController extends Controller
     {
         $employeeData = $this->getEmployeeData();
         //se obtienen todos los empleados del modelo Employee
+        $wasteClassifierEmployees = Employee::where('role', RoleEnum::WasteClassifier)->get();
         $employees = Employee::all();
         //se obtienen todos los elementos del inventario
         $wasteInventories = WasteInventory::all();
 
-        return view('waste-income.create', compact('employees', 'wasteInventories', 'employeeData'));
+        return view('waste-income.create', compact('wasteClassifierEmployees', 'wasteInventories', 'employeeData'));
     }
 
     /**
