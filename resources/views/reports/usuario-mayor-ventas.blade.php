@@ -8,26 +8,28 @@
 </head>
 
 <body class="wrapper">
-@include('layouts.header')
+    @include('layouts.header')
     <div class="container mt-5">
         <div class="row justify-content-center">
-        
+
             <div class="col-md-8">
-                <h1 class="text-center mb-4">Residuos Más Ingresados</h1>
-                
+                <h1 class="text-center mb-4">Empleado con Más Ventas y Dinero Vendido</h1>
+
                 <div class="tablas">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Residuo</th>
-                                <th>Total Ingreso</th>
+                                <th>Empleado</th>
+                                <th>Total Ventas</th>
+                                <th>Total Dinero Vendido</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($report as $item)
+                            @foreach($reportVentas as $ventas)
                                 <tr>
-                                    <td>{{ $item->wasteInventory->name }}</td>
-                                    <td>{{ $item->total_amount }}</td>
+                                    <td>{{ $ventas->employee->name }} {{ $ventas->employee->last_name }}</td>
+                                    <td>{{ $ventas->total_ventas }}</td>
+                                    <td>{{ $reportDinero->where('employee_id', $ventas->employee_id)->first()->total_dinero_vendido }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -36,7 +38,6 @@
             </div>
         </div>
 
-    @include('layouts.scripts')
+        @include('layouts.scripts')
+    </div>
 </body>
-
-</html>

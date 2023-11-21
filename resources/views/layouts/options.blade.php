@@ -59,6 +59,7 @@
         <li><a href="{{ route('report.usuarioMayorConversiones') }}">Usuario Mayor Reciclaje</a></li>
 
         <li><a href="{{ route('report.residuosMasReciclados') }}">Residuos Más Reciclados</a></li>
+        <li><a href="{{ route('report.usuarioMayorIngresos') }}">Empleado Mayor Ventas</a></li>
 
     </a></li>
     @endif
