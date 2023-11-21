@@ -17,6 +17,13 @@ class ReportController extends Controller
 {
     //
 
+    public function index()
+    {
+        $employeeData = $this->getEmployeeData();
+        
+        return view('reports.index', compact('employeeData'));
+    }
+
     private function getEmployeeData()
     {
         $employeeData = Session::get('employeeData');
@@ -45,6 +52,7 @@ class ReportController extends Controller
     public function residuosMasReciclados()
     {
         $employeeData = $this->getEmployeeData();
+
         $report = Conversions::groupBy('recycled_waste_inventory_id')
             ->selectRaw('recycled_waste_inventory_id, SUM(recycled_amount) as total_recycled_amount')
             ->orderByDesc('total_recycled_amount')
@@ -54,18 +62,22 @@ class ReportController extends Controller
         return view('reports.residuos-mas-reciclado', compact('report', 'employeeData'));
     }
 
+
+
+
     public function residuosRecicladosMasVendidos()
     {
         $employeeData = $this->getEmployeeData();
 
         $report = Sells::groupBy('recycled_waste_inventory_id')
-            ->selectRaw('recycled_waste_inventory_id, SUM(amount) as total_amount')
+            ->selectRaw('recycled_waste_inventory_id, SUM(amount) as total_amount, SUM(cost) as total_money')
             ->orderByDesc('total_amount')
             ->with('recycledWasteInventory')
             ->get();
 
         return view('reports.residuos-reciclados-mas-vendidos', compact('report', 'employeeData'));
     }
+
 
     public function usuarioMayorIngresoResiduos()
     {

@@ -40,13 +40,13 @@ class WasteInventoryController extends Controller
         $campos=[
             'name' => 'required',
             //'amount' => 'required',
-            'cost' => 'required'
+            'cost' => ['required', 'regex:/^\d+(\.\d{1,2})?$/'],
         ];
 
         $message=[
             'name.required' => 'el nombre es requerido',
             //'amount.required' => 'cantidad requerida',
-            'cost.required' => 'Costo requerido'
+            'cost.required' => 'Ingrese un costo valido, puede ser de hasta dos decimales'
         ];
 
         $this->validate($request, $campos, $message);

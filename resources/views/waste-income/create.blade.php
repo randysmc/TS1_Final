@@ -33,13 +33,18 @@ use App\Models\WasteInventory;
                         <div class="card">
                             <div class="card-body">
                                 <h2 class="card-title mb-4">Registro de Ingresos</h2>
+                                <p class="card-text">Completa el siguiente formulario para realizar un nuevo ingreso sobre un residuo, en tipo de 
+                                    residuo aparecera una lista sobre los elementos que tenemos en inventario, de no contar con ese elemento puedes 
+                                    seleccionar el boton de ingresar nuevo residuo
+                                </p>
+
                                 <form action="{{ route('waste-inventory.store') }}" method="post" enctype="multipart/form-data">
                                     @csrf
 
                                     <div class="mb-3">
                                         <label for="employee_id" class="form-label">Empleado:</label>
                                         <select class="form-select" id="employee_id" name="employee_id">
-                                            <option value="" selected disabled>Seleccione Empleado</option>
+                                            <option value="" selected disabled>Seleccione Empleado Clasificador</option>
                                             @foreach ($wasteClassifierEmployees as $employee)
                                                 <option value="{{ $employee->id }}">{{ $employee->name }} {{ $employee->last_name }}</option>
                                             @endforeach
@@ -81,6 +86,10 @@ use App\Models\WasteInventory;
                                     </div>
                                 </form>
                             </div>
+                            <div class="card-body">
+                        
+                        <img src="https://img.freepik.com/fotos-premium/clasificacion-residuos_863013-106179.jpg" alt="Descripción de la imagen">
+                    </div>
                         </div>
                     </div>
                 </div>

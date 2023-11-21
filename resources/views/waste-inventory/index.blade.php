@@ -15,6 +15,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h2 class="card-title mb-4">Inventario de Residuos</h2>
+                            <p>Elementos guardados en el inventario de la aplicación</p>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -48,6 +49,12 @@
                                 <a href="{{ route('waste-inventory.create') }}" class="btn btn-success">Crear Nuevo Registro</a>
                             </div>
                         </div>
+
+                        <!-- Div para la imagen -->
+                        <div class="card mt-4">
+                            <img src="https://www.educarchile.cl/sites/default/files/styles/style_image_slider_multimedia/public/2022-05/reciclaje-03.jpg?itok=AVQ1n2N1" class="card-img-top" alt="Descripción de la imagen">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -55,5 +62,4 @@
     </div> 
     @include('layouts.scripts')
 </body>
-
 </html>

@@ -21,7 +21,7 @@
                         <div class="mb-3">
                             <label for="employee_id" class="form-label">Selecciona un Empleado:</label>
                             <select name="employee_id" id="employee_id" class="form-select" required>
-                                @foreach($adminEmployees as $employee)
+                                @foreach($sellerEmployees as $employee)
                                 <option value="{{ $employee->id }}">{{ $employee->name }} {{ $employee->last_name }}</option>
                                 @endforeach
                             </select>

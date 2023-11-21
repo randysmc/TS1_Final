@@ -2,21 +2,26 @@
 <html lang="es">
 
 <head>
-    <!-- ...otros encabezados... -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/base.css') }}">
 </head>
 
 <body>
-    <!-- ...contenido... -->
     <div class="wrapper">
         @include('layouts.header')
+
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-body">
                             <h2 class="card-title mb-4">Lista de Ingresos</h2>
+                            <p>
+                                Aquí mostramos la lista de ingresos.
+                            </p>
+                            <p>
+                                El precio por unidad es el costo por el que se compra.
+                            </p>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -40,7 +45,7 @@
                                     </tr>
                                     @empty
                                     <tr>
-                                        <td colspan="6">No waste incomes found.</td>
+                                        <td colspan="6">No se encontraron ingresos.</td>
                                     </tr>
                                     @endforelse
                                 </tbody>
@@ -53,10 +58,20 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            
+                            <p class="card-text">Aquí puedes agregar una descripción de la imagen.</p>
+                            <img class="img-fluid" src="https://imagenes.heraldo.es/files/image_990_v3/files/fp/uploads/imagenes/2019/06/04/imagen-hap039pri-20180517co.r_d.2182-658.jpeg" alt="Descripción de la imagen">
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
+
     @include('layouts.scripts')
 </body>
 

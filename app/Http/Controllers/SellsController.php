@@ -30,11 +30,11 @@ class SellsController extends Controller
 
         ///ESTA ES MI FUNCION DE VENTAS, NO TOCAR
         $employeeData = $this->getEmployeeData();
-        $adminEmployees = Employee::where('role', RoleEnum::Admin)->get();
+        $sellerEmployees = Employee::where('role', RoleEnum::Seller)->get();
         $recycledWasteInventories = RecycledWasteInventory::all();
         $employees = Employee::all();
 
-        return view('sell.create', compact('recycledWasteInventories', 'adminEmployees', 'employeeData'));
+        return view('sell.create', compact('recycledWasteInventories', 'sellerEmployees', 'employeeData'));
     }
 
     /**

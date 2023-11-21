@@ -14,13 +14,15 @@ class HomeController extends Controller
         $employeeData = Session::get('employeeData');
         switch ($employeeData['role']) {
             case UserRole::Admin:
-                return redirect()->route('employe.index');
+                return redirect()->route('principal.home');
             case UserRole::WasteClassifier:
                 return redirect()->route('waste-inventory.index');
             case UserRole::Operator:
                 return redirect()->route('recycled-waste-inventory.index');
             case UserRole::Seller:
                 return redirect()->route('sell.index');
+            case UserRole::Manager:
+                return redirect()->route('reports.index');
             default:
                 return redirect()->route('welcome');
         }

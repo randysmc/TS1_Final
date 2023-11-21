@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConversionsController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\RecycledWasteInventoryController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\WasteIncomeController;
@@ -49,15 +50,18 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/recycled-waste-inventory', RecycledWasteInventoryController::class);
     Route::resource('/conversion',ConversionsController::class);
     Route::resource('/sell', SellsController::class);
-    Route::get('report/residuos-mas-ingresados', [ReportController::class, 'residuosMasIngresados'])->name('report.residuosMasIngresados');
-    Route::get('report/residuos-mas-reciclados', [ReportController::class, 'residuosMasReciclados'])->name('report.residuosMasReciclados');
-    Route::get('report/residuos-reciclados-mas-vendidos', [ReportController::class, 'residuosRecicladosMasVendidos'])->name('report.residuosRecicladosMasVendidos');
-    Route::get('report/usuario-mayor-ingreso-residuos', [ReportController::class, 'usuarioMayorIngresoResiduos'])->name('report.usuarioMayorIngresoResiduos');
-    Route::get('report/usuario-mas-conversiones', [ReportController::class, 'usuarioMayorConversiones'])->name('report.usuarioMayorConversiones');
-    Route::get('report/usuario-mayor-ventas', [ReportController::class, 'usuarioMayorIngresos'])->name('report.usuarioMayorIngresos');
+    Route::get('/report/residuos-mas-ingresados', [ReportController::class, 'residuosMasIngresados'])->name('report.residuosMasIngresados');
+    Route::get('/report/residuos-mas-reciclados', [ReportController::class, 'residuosMasReciclados'])->name('report.residuosMasReciclados');
+    Route::get('/report/residuos-reciclados-mas-vendidos', [ReportController::class, 'residuosRecicladosMasVendidos'])->name('report.residuosRecicladosMasVendidos');
+    Route::get('/report/usuario-mayor-ingreso-residuos', [ReportController::class, 'usuarioMayorIngresoResiduos'])->name('report.usuarioMayorIngresoResiduos');
+    Route::get('/report/usuario-mas-conversiones', [ReportController::class, 'usuarioMayorConversiones'])->name('report.usuarioMayorConversiones');
+    Route::get('/report/usuario-mayor-ventas', [ReportController::class, 'usuarioMayorIngresos'])->name('report.usuarioMayorIngresos');
+    Route::get('/reports/index', [ReportController::class, 'index'])->name('reports.index');
+    Route::resource('/principal', PrincipalController::class );
+    Route::get('/principal', [PrincipalController::class, 'index'])->name('principal.home');
+    Route::get('/about',[PrincipalController::class, 'about'])->name('principal.about');
+    
 
-    //Route::get('report/usuario-mayor-ventas', 'ReportController@usuarioMayorVentas')->name('report.usuarioMayorVentas');
-    //Route::get('report/usuario-mayor-ingresos', 'ReportController@usuarioMayorIngresos')->name('report.usuarioMayorIngresos');
 
 
 

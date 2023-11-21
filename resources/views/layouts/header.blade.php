@@ -14,7 +14,7 @@
         <div class="top_navbar">
             <div class="hamburger">
                 <a href="{{ url('logout') }}" id="logout"><i class="fa fa-power-off"></i> Log-out</a>
-                <a>Home</a>
+                
             </div>
         </div>
     </div>

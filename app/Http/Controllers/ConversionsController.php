@@ -8,6 +8,7 @@ use App\Models\WasteInventory;
 use App\Models\RecycledWasteInventory;
 use Illuminate\Support\Facades\Session;
 use App\Models\Conversions;
+use App\Enums\UserRole as RoleEnum;
 
 class ConversionsController extends Controller
 {
@@ -39,8 +40,10 @@ class ConversionsController extends Controller
         $wasteInventories = WasteInventory::all();
         $recycledWasteInventories = RecycledWasteInventory::all();
         $employees = Employee::all();
+        $operatorEmployees = Employee::where('role', RoleEnum::Operator)->get();
 
-        return view('conversion.create', compact('employees', 'wasteInventories', 'recycledWasteInventories', 'employeeData'));
+
+        return view('conversion.create', compact('operatorEmployees', 'wasteInventories', 'recycledWasteInventories', 'employeeData'));
         //return view('conversion.index');
     }
 
