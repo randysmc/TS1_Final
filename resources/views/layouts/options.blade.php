@@ -53,6 +53,11 @@
         </a></li>
 
         <li><a href="{{ route('report.residuosMasIngresados') }}">Residuos Más Ingresados</a></li>
+        <li><a href="{{ route('report.residuosMasReciclados') }}">Residuos Más Reciclados</a></li>
+        <li><a href="{{ route('report.residuosRecicladosMasVendidos') }}">Reciclaje Mas Vendido</a></li>
+        <li><a href="{{ route('report.residuosMasReciclados') }}">Residuos Más Reciclados</a></li>
+        <li><a href="{{ route('report.residuosMasReciclados') }}">Residuos Más Reciclados</a></li>
+        <li><a href="{{ route('report.residuosMasReciclados') }}">Residuos Más Reciclados</a></li>
 
     </a></li>
     @endif
