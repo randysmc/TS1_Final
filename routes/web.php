@@ -52,12 +52,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('report/residuos-mas-ingresados', [ReportController::class, 'residuosMasIngresados'])->name('report.residuosMasIngresados');
     Route::get('report/residuos-mas-reciclados', [ReportController::class, 'residuosMasReciclados'])->name('report.residuosMasReciclados');
     Route::get('report/residuos-reciclados-mas-vendidos', [ReportController::class, 'residuosRecicladosMasVendidos'])->name('report.residuosRecicladosMasVendidos');
+    Route::get('report/usuario-mayor-ingreso-residuos', [ReportController::class, 'usuarioMayorIngresoResiduos'])->name('report.usuarioMayorIngresoResiduos');
+    Route::get('report/usuario-mas-conversiones', [ReportController::class, 'usuarioMayorConversiones'])->name('report.usuarioMayorConversiones');
 
-
-
-    Route::get('report/residuos-mas-vendidos', 'ReportController@residuosMasVendidos')->name('report.residuoMasVendido');
-    Route::get('report/usuario-mayor-ingreso-residuos', 'ReportController@usuarioMayorIngresoResiduos')->name('report.usuarioMayorIngresoResiduos');
-    Route::get('report/usuario-mayor-reciclaje', 'ReportController@usuarioMayorReciclajes')->name('report.usuarioMayorReciclajes');
     Route::get('report/usuario-mayor-ventas', 'ReportController@usuarioMayorVentas')->name('report.usuarioMayorVentas');
     Route::get('report/usuario-mayor-ingresos', 'ReportController@usuarioMayorIngresos')->name('report.usuarioMayorIngresos');
 

@@ -62,17 +62,37 @@ class ReportController extends Controller
 
     public function usuarioMayorIngresoResiduos()
     {
+        $employeeData = $this->getEmployeeData();
+
+        $report = WasteIncome::groupBy('employee_id')
+            ->selectRaw('employee_id, SUM(amount) as total_ingresado')
+            ->orderByDesc('total_ingresado')
+            ->with('employee')
+            ->get();
+
+        return view('reports.usuario-mayor-ingreso-residuos', compact('report', 'employeeData'));
     }
 
-    public function usuarioMayorReciclajes()
+    public function usuarioMayorConversiones()
     {
+        $employeeData = $this->getEmployeeData();
+        
+        $report = Conversions::groupBy('employee_id')
+            ->selectRaw('employee_id, SUM(recycled_amount) as total_reciclado')
+            ->orderByDesc('total_reciclado')
+            ->with('employee')
+            ->get();
+
+            return view('reports.usuario-mas-conversiones', compact('report', 'employeeData'));
     }
 
     public function usuarioMayorVentas()
     {
+        $employeeData = $this->getEmployeeData();
     }
 
     public function usuarioMayorIngresos()
     {
+        $employeeData = $this->getEmployeeData();
     }
 }

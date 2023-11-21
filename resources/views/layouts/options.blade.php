@@ -55,8 +55,9 @@
         <li><a href="{{ route('report.residuosMasIngresados') }}">Residuos Más Ingresados</a></li>
         <li><a href="{{ route('report.residuosMasReciclados') }}">Residuos Más Reciclados</a></li>
         <li><a href="{{ route('report.residuosRecicladosMasVendidos') }}">Reciclaje Mas Vendido</a></li>
-        <li><a href="{{ route('report.residuosMasReciclados') }}">Residuos Más Reciclados</a></li>
-        <li><a href="{{ route('report.residuosMasReciclados') }}">Residuos Más Reciclados</a></li>
+        <li><a href="{{ route('report.usuarioMayorIngresoResiduos') }}">Usuario Mayor Ingreso de Residuos</a></li>
+        <li><a href="{{ route('report.usuarioMayorConversiones') }}">Usuario Mayor Reciclaje</a></li>
+
         <li><a href="{{ route('report.residuosMasReciclados') }}">Residuos Más Reciclados</a></li>
 
     </a></li>
