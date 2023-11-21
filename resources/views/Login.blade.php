@@ -24,8 +24,8 @@
                     <i class="fas fa-user"></i>
                 </div>
                 <div class="div">
-                    <h5>Usuario</h5>
-                    <input type="text" id="username" class="input" name="username">
+                    <h5></h5>
+                    <input type="text" id="username" class="input" name="username" placeholder="Usuario">
                 </div>
             </div>
             <div class="input-div pass">
@@ -33,8 +33,8 @@
                     <i class="fas fa-lock"></i>
                 </div>
                 <div class="div">
-                    <h5>Contraseña</h5>
-                    <input type="password" id="input" class="input" name="password">
+                    <h5></h5>
+                    <input type="password" id="input" class="input" name="password" placeholder="Password">
                 </div>
             </div>
             @if($errors->any())
